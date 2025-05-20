@@ -1,23 +1,60 @@
-import React, { useState } from 'react';
-import Create from './Components/Create';
-import Read from './Components/Read';
-
+import React, { useState } from "react"
 const App = () => {
-  const [users, setUsers] = useState(
+  const [todo, settodo] = useState(
     [
-      { name: 'john do ', age: 89 },
-      { name: 'john sena', age: 40 },
-      { name: 'john kalu  ', age: 90 }
+      { index: 1, tittle: "kam krle bhai mere yarr dost ", discription: "done" }
     ]
-  );
-
+  )
+  const [input, setinput] = useState('')
+  const [completed, setcompleted] = useState(true)
+  const [gender, setgender] = useState('female')
+  const [city, setcity] = useState("Bhopal")
   return (
     <>
-   <Create/>
-      <hr />
-      <Read users = {users} setusesrs = {setUsers}/>
+      <form >
+        <input type="text"
+          placeholder="tittle"
+          value={input}
+          onChange={(e) => setinput(e.target.value)} />
+        <br />
+        <br />
+        <br />
+        <br />
+        <input type="checkbox"
+          checked={completed}
+          onChange={(e) => setcompleted(e.target.checked)} /> completed
+        <br />
+        <br />
+        <br />
+        <br />
+        <input
+          value='male'
+          checked={gender == 'male' && true}
+          onChange={(e) => setgender(e.target.value)}
+          type="radio" />male
+        <input
+          value='female'
+          checked={gender == 'female' && true}
+          onChange={(e) => setgender(e.target.value)}
+          type="radio" />female
+      </form>
+      <br />
+      <br />
+      <br />
+      <br />
+      <select value={city} onChange={(e) => setcity(e.target.value)}>
+        <option value="Bhopal">Bhopal</option>
+        <option value="Jhansi">Jhansi</option>
+        <option value="Lalitpur">Lalitpur</option>
+        <option value="Sagar">Sagar </option>
+      </select>
+      <br />
+      <br />
+      <br />
+      <br />
+      <button>Create todo list</button>
     </>
   )
-};
+}
 
 export default App
